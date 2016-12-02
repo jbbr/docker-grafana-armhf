@@ -1,3 +1,5 @@
+Based on [grafana/grafana-docker](https://github.com/grafana/grafana-docker), roughly modified to use armhf build compatible with Raspberry Pi 2 & 3
+
 # Grafana Docker image
 
 This project builds a Docker image with the latest master build of Grafana.
