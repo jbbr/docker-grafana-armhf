@@ -15,8 +15,8 @@ echo "GRAFANA_VERSION: ${_grafana_version}"
 echo "DOCKER TAG: ${_grafana_tag}"
 echo "RELEASE BUILD: ${_release_build}"
 
-docker build --build-arg GRAFANA_VERSION=${_grafana_version} --tag "grafana/grafana:${_grafana_tag}"  --no-cache=true .
+docker build --build-arg GRAFANA_VERSION=${_grafana_version} --tag "jbbr/armhf-grafana:${_grafana_tag}" .
 
 if [ $_release_build == true ]; then
-	docker build --build-arg GRAFANA_VERSION=${_grafana_version} --tag "grafana/grafana:latest"  --no-cache=true .
+	docker build --build-arg GRAFANA_VERSION=${_grafana_version} --tag "jbbr/armhf-grafana:latest" .
 fi
