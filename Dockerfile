@@ -1,14 +1,13 @@
-FROM debian:jessie
-
-ARG GRAFANA_VERSION
+FROM resin/rpi-raspbian:jessie
+MAINTAINER Janek Thomaschewski <janek_docker@jbbr.net>
 
 RUN apt-get update && \
     apt-get -y --no-install-recommends install libfontconfig curl ca-certificates && \
     apt-get clean && \
-    curl https://grafanarel.s3.amazonaws.com/builds/grafana_${GRAFANA_VERSION}_amd64.deb > /tmp/grafana.deb && \
+    curl -L -o /tmp/grafana.deb https://dl.bintray.com/fg2it/deb/main/g/grafana_4.0.0-1480448883_armhf.deb && \
     dpkg -i /tmp/grafana.deb && \
     rm /tmp/grafana.deb && \
-    curl -L https://github.com/tianon/gosu/releases/download/1.7/gosu-amd64 > /usr/sbin/gosu && \
+    curl -L https://github.com/tianon/gosu/releases/download/1.10/gosu-armhf > /usr/sbin/gosu && \
     chmod +x /usr/sbin/gosu && \
     apt-get remove -y curl && \
     apt-get autoremove -y && \
